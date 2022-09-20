@@ -28,7 +28,7 @@ flutter:
 
   # example:
   fonts:
-    - family: danaa
+    - family: dana
       fonts:
         - asset: fonts/dm.ttf
   #       - asset: fonts/Schyler-Italic.ttf
