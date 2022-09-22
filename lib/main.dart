@@ -14,6 +14,10 @@ class Application extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'dana'),
       home: Scaffold(
+        appBar: AppBar(
+          title: Text('کویز کویین'),
+          backgroundColor: Colors.indigo[800],
+        ),
         body: HomeScreen(),
       ),
     );
