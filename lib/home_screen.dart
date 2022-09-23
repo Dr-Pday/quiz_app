@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/quiz_page.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -20,7 +21,13 @@ class HomeScreen extends StatelessWidget {
                 backgroundColor: Colors.indigo[800],
                 minimumSize: Size(200, 40),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => QuizPage(),
+                  ),
+                );
+              },
               child: Text(
                 'شروع بازی',
                 style: TextStyle(
@@ -33,5 +40,11 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  //you can use this syntax or syntax that write in onPressed
+  
+  void navigateToPage(context, pageName) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => pageName));
   }
 }
