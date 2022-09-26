@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   //you can use this syntax or syntax that write in onPressed
-  
+
   void navigateToPage(context, pageName) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => pageName));
   }
