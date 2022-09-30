@@ -54,7 +54,11 @@ class _QuizPageState extends State<QuizPage> {
                 (index) => ListTile(
                   onTap: () {
                     setState(() {
-                      shownQuestionIndex = shownQuestionIndex + 1;
+                      if (shownQuestionIndex == 0 && index == 2) {
+                        shownQuestionIndex = shownQuestionIndex + 1;
+                      } else if (shownQuestionIndex == 1 && index == 0) {
+                        print('yes thats correct');
+                      }
                     });
                   },
                   title: Text(
