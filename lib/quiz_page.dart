@@ -51,25 +51,29 @@ class _QuizPageState extends State<QuizPage> {
               SizedBox(height: 30),
               ...List.generate(
                 4,
-                (index) => ListTile(
-                  onTap: () {
-                    setState(() {
-                      if (shownQuestionIndex == 0 && index == 2) {
-                        shownQuestionIndex = shownQuestionIndex + 1;
-                      } else if (shownQuestionIndex == 1 && index == 0) {
-                        print('yes thats correct');
-                      }
-                    });
-                  },
-                  title: Text(
-                    getQuestionsList()![shownQuestionIndex].answerList![index],
-                    textAlign: TextAlign.end,
-                  ),
-                ),
+                (index) => ListItems(index),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget ListItems(index) {
+    return ListTile(
+      onTap: () {
+        setState(() {
+          if (shownQuestionIndex == 0 && index == 2) {
+            shownQuestionIndex = shownQuestionIndex + 1;
+          } else if (shownQuestionIndex == 1 && index == 0) {
+            print('yes thats correct');
+          }
+        });
+      },
+      title: Text(
+        getQuestionsList()![shownQuestionIndex].answerList![index],
+        textAlign: TextAlign.end,
       ),
     );
   }
