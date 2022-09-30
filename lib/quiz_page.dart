@@ -58,7 +58,7 @@ class _QuizPageState extends State<QuizPage> {
                     });
                   },
                   title: Text(
-                    getQuestionsList()![shownQuestionIndex].answerList![2],
+                    getQuestionsList()![shownQuestionIndex].answerList![index],
                     textAlign: TextAlign.end,
                   ),
                 ),
