@@ -1,7 +1,7 @@
 class Question {
   String? questionTitle;
   String? imageNameNumber;
-  int? questionNumber;
+  String? questionNumber;
   int? correctanswer;
   List<String>? answerList;
 }

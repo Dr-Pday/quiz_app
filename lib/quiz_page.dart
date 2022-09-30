@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/constants/constants.dart';
 
-class QuizPage extends StatelessWidget {
+class QuizPage extends StatefulWidget {
   const QuizPage({super.key});
 
   @override
+  State<QuizPage> createState() => _QuizPageState();
+}
+
+class _QuizPageState extends State<QuizPage> {
+  int shownQuestionIndex = 0;
+
+  @override
   Widget build(BuildContext context) {
+    String questionImageIndex =
+        getQuestionsList()![shownQuestionIndex].imageNameNumber!;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -17,12 +27,12 @@ class QuizPage extends StatelessWidget {
             children: [
               Container(width: double.infinity),
               Image.asset(
-                'images/1.png',
+                'images/$questionImageIndex.png',
                 height: 300,
               ),
               SizedBox(height: 25),
               Text(
-                '۱ سوال',
+                getQuestionsList()![shownQuestionIndex].questionNumber!,
                 style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
@@ -31,7 +41,7 @@ class QuizPage extends StatelessWidget {
               ),
               SizedBox(height: 30),
               Text(
-                'بهترین شعبده باز جهان کیست ؟',
+                getQuestionsList()![shownQuestionIndex].questionTitle!,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -39,28 +49,18 @@ class QuizPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 30),
-              ListTile(
-                title: Text(
-                  'پاسخ اول',
-                  textAlign: TextAlign.end,
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  'پاسخ دوم',
-                  textAlign: TextAlign.end,
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  'پاسخ سوم',
-                  textAlign: TextAlign.end,
-                ),
-              ),
-              ListTile(
-                title: Text(
-                  'پاسخ چهارم',
-                  textAlign: TextAlign.end,
+              ...List.generate(
+                4,
+                (index) => ListTile(
+                  onTap: () {
+                    setState(() {
+                      shownQuestionIndex = shownQuestionIndex + 1;
+                    });
+                  },
+                  title: Text(
+                    getQuestionsList()![shownQuestionIndex].answerList![2],
+                    textAlign: TextAlign.end,
+                  ),
                 ),
               ),
             ],

@@ -12,7 +12,7 @@ List<Question>? getQuestionsList() {
   firstQuestion.questionTitle = 'بهترین شعبده باز جهان کیست ؟';
   firstQuestion.correctanswer = 2;
   firstQuestion.imageNameNumber = '1';
-  firstQuestion.questionNumber = 1;
+  firstQuestion.questionNumber = 'سوال ۱';
 
   var secondQuestion = Question();
 
@@ -24,6 +24,8 @@ List<Question>? getQuestionsList() {
     'رییسی جاکش'
   ];
   secondQuestion.imageNameNumber = '2';
-  secondQuestion.questionNumber = 2;
+  secondQuestion.questionNumber = 'سوال ۲';
   secondQuestion.correctanswer = 0;
+
+  return [firstQuestion, secondQuestion];
 }
