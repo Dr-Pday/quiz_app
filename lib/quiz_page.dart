@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/constants/constants.dart';
+import 'package:quiz_app/data/questions.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({super.key});
@@ -10,11 +11,12 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   int shownQuestionIndex = 0;
+  Question? selectedQuestion;
 
   @override
   Widget build(BuildContext context) {
-    String questionImageIndex =
-        getQuestionsList()![shownQuestionIndex].imageNameNumber!;
+    selectedQuestion = getQuestionsList()![shownQuestionIndex];
+    String questionImageIndex = selectedQuestion!.imageNameNumber!;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -32,7 +34,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               SizedBox(height: 25),
               Text(
-                getQuestionsList()![shownQuestionIndex].questionNumber!,
+                selectedQuestion!.questionNumber!,
                 style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
@@ -41,7 +43,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               SizedBox(height: 30),
               Text(
-                getQuestionsList()![shownQuestionIndex].questionTitle!,
+                selectedQuestion!.questionTitle!,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -63,16 +65,18 @@ class _QuizPageState extends State<QuizPage> {
   Widget ListItems(index) {
     return ListTile(
       onTap: () {
-        setState(() {
-          if (shownQuestionIndex == 0 && index == 2) {
+        if (shownQuestionIndex == 0 && index == 2) {
+          setState(() {
             shownQuestionIndex = shownQuestionIndex + 1;
-          } else if (shownQuestionIndex == 1 && index == 0) {
+          });
+        } else if (shownQuestionIndex == 1 && index == 0) {
+          setState(() {
             print('yes thats correct');
-          }
-        });
+          });
+        }
       },
       title: Text(
-        getQuestionsList()![shownQuestionIndex].answerList![index],
+        selectedQuestion!.answerList![index],
         textAlign: TextAlign.end,
       ),
     );
