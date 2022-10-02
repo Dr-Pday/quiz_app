@@ -14,6 +14,8 @@ class _QuizPageState extends State<QuizPage> {
   int shownQuestionIndex = 0;
   Question? selectedQuestion;
   bool answered = false;
+  int trueAnswer = 0;
+  int falseAnswer = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -69,9 +71,10 @@ class _QuizPageState extends State<QuizPage> {
     return ListTile(
       onTap: () {
         if (selectedQuestion!.correctanswer == index) {
+          trueAnswer++;
           print('correct');
         } else {
-          print('wrong');
+          falseAnswer++;
         }
         if (shownQuestionIndex == getQuestionsList()!.length - 1) {
           answered = true;
@@ -95,7 +98,8 @@ class _QuizPageState extends State<QuizPage> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (BuildContext context) => ResultScreen(),
+            builder: (BuildContext context) =>
+                ResultScreen(correctAnswer: trueAnswer),
           ),
         );
       },

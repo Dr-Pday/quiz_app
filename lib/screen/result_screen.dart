@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({super.key});
-
+  ResultScreen({super.key, this.correctAnswer = 0});
+  int correctAnswer = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +26,7 @@ class ResultScreen extends StatelessWidget {
               style: TextStyle(fontSize: 20),
             ),
             Text(
-              '3',
+              '$correctAnswer',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 100,
