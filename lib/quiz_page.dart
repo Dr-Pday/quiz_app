@@ -12,6 +12,7 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   int shownQuestionIndex = 0;
   Question? selectedQuestion;
+  bool answered = false;
 
   @override
   Widget build(BuildContext context) {
@@ -55,22 +56,7 @@ class _QuizPageState extends State<QuizPage> {
                 4,
                 (index) => ListItems(index),
               ),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
-                    backgroundColor: Colors.red[700],
-                    minimumSize: Size(200, 50)),
-                child: Text(
-                  'مشاهده نتایج',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                ),
-              )
+              if (answered) GetResualt(),
             ],
           ),
         ),
@@ -81,10 +67,13 @@ class _QuizPageState extends State<QuizPage> {
   Widget ListItems(index) {
     return ListTile(
       onTap: () {
-        if (selectedQuestion!.answerList == index) {
+        if (selectedQuestion!.correctanswer == index) {
           print('correct');
         } else {
           print('wrong');
+        }
+        if (shownQuestionIndex == getQuestionsList()!.length - 1) {
+          answered = true;
         }
         setState(() {
           if (shownQuestionIndex < getQuestionsList()!.length - 1) {
@@ -95,6 +84,25 @@ class _QuizPageState extends State<QuizPage> {
       title: Text(
         selectedQuestion!.answerList![index],
         textAlign: TextAlign.end,
+      ),
+    );
+  }
+
+  Widget GetResualt() {
+    return ElevatedButton(
+      onPressed: () {},
+      style: ElevatedButton.styleFrom(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          backgroundColor: Colors.red[700],
+          minimumSize: Size(200, 50)),
+      child: Text(
+        'مشاهده نتایج',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 18,
+        ),
       ),
     );
   }
