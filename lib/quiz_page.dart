@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/constants/constants.dart';
 import 'package:quiz_app/data/questions.dart';
+import 'package:quiz_app/screen/result_screen.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({super.key});
@@ -90,7 +91,14 @@ class _QuizPageState extends State<QuizPage> {
 
   Widget GetResualt() {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => ResultScreen(),
+          ),
+        );
+      },
       style: ElevatedButton.styleFrom(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
