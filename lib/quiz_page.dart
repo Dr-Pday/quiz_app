@@ -32,7 +32,7 @@ class _QuizPageState extends State<QuizPage> {
                 'images/$questionImageIndex.png',
                 height: 300,
               ),
-              SizedBox(height: 25),
+              SizedBox(height: 20),
               Text(
                 selectedQuestion!.questionNumber!,
                 style: TextStyle(
@@ -41,7 +41,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 20),
               Text(
                 selectedQuestion!.questionTitle!,
                 style: TextStyle(
@@ -50,11 +50,27 @@ class _QuizPageState extends State<QuizPage> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 25),
               ...List.generate(
                 4,
                 (index) => ListItems(index),
               ),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
+                    backgroundColor: Colors.red[700],
+                    minimumSize: Size(200, 50)),
+                child: Text(
+                  'مشاهده نتایج',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              )
             ],
           ),
         ),
