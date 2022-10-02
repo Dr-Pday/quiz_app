@@ -65,15 +65,16 @@ class _QuizPageState extends State<QuizPage> {
   Widget ListItems(index) {
     return ListTile(
       onTap: () {
-        if (shownQuestionIndex == 0 && index == 2) {
-          setState(() {
-            shownQuestionIndex = shownQuestionIndex + 1;
-          });
-        } else if (shownQuestionIndex == 1 && index == 0) {
-          setState(() {
-            print('yes thats correct');
-          });
+        if (selectedQuestion!.answerList == index) {
+          print('correct');
+        } else {
+          print('wrong');
         }
+        setState(() {
+          if (shownQuestionIndex < getQuestionsList()!.length - 1) {
+            shownQuestionIndex++;
+          }
+        });
       },
       title: Text(
         selectedQuestion!.answerList![index],
